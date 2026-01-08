@@ -2,7 +2,7 @@
 # 가장 심플한 파이썬 API 서버 (Flask)
 # 실행하면: http://localhost:5000/ 로 접속 시 "Hello, World!" 반환
 
-from flask import Flask
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -12,6 +12,17 @@ app = Flask(__name__)
 @app.get("/")
 def hello():
     return "Hello, World!"
+@app.post("/users")
+def create_user():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    # TODO: DB 저장 로직 넣기
+    print(username, password)
+
+    return jsonify({"message": "회원가입 완료"}), 201
+
 
 if __name__ == "__main__":
     # host=0.0.0.0 : 외부(다른 PC/컨테이너)에서도 접근 가능하게 열고 싶을 때
