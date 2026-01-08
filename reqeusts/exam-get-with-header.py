@@ -8,6 +8,7 @@ headers = {
     # 내가 보내는 데이터 타입이 JSON이라는 뜻
     "Content-Type": "application/json",
 }
+print("hi world")
 
 # GET 요청 + headers 함께 전달
 response = requests.get(url, headers=headers)
